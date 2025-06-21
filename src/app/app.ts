@@ -3,8 +3,10 @@ import { RouterOutlet } from "@angular/router";
 import { TalkService } from "./@shared/services/talks/talks.service";
 import { DatePipe, JsonPipe } from "@angular/common";
 import { AuthService } from "./@shared/services/auth/auth.service";
-import { User } from "@angular/fire/auth";
+
 import { Timestamp } from "@angular/fire/firestore";
+import { Navbar } from "./@core/layouts/navbar/navbar";
+import { Footer } from "./@core/layouts/footer/footer";
 
 export interface ITalk {
 	title: string;
@@ -15,7 +17,7 @@ export interface ITalk {
 }
 @Component({
 	selector: "app-root",
-	imports: [RouterOutlet, JsonPipe, DatePipe],
+	imports: [Navbar, DatePipe, Navbar, Footer],
 	templateUrl: "./app.html",
 	styleUrl: "./app.scss",
 })
@@ -24,14 +26,9 @@ export class App implements OnInit {
 	talks: ITalk[] = [];
 
 	talkService = inject(TalkService);
-	authService = inject(AuthService);
 
 	async ngOnInit(): Promise<void> {
 		this.talks = await this.talkService.getTalks();
-	}
-
-	signIn() {
-		this.authService.anonSignIn();
 	}
 
 	// async getTalkSummary(talk: any) {

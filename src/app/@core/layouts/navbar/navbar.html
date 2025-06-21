@@ -1,0 +1,33 @@
+<!-- Start of Navigation -->
+
+<!-- End of navigation -->
+
+<header
+	class="bg-red-100 backdrop-blur-xl px-8 py-4 rounded-3xl flex justify-between"
+>
+	<h2 class="text-xl font-semibold">Ng Kenya Talks</h2>
+	<div class="space-x-10">
+		@if (!authService.isLoggedIn) {
+		<button
+			class="py-2 px-3 w-fit inline-flex justify-center items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-rose-800 bg-transparent text-rose-700 hover:bg-rose-800 hover:text-black focus:outline-hidden focus:bg-yellow-500 transition disabled:opacity-50 disabled:pointer-events-none pointer-events-cursor cursor-pointer"
+			(click)="signIn()"
+		>
+			Sign In
+		</button>
+		}@else {
+		<button
+			class="py-2 px-3 w-fit inline-flex justify-center items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl bg-rose-800 border-0 text-white hover:border-rose-800 hover:border-2 hover:bg-transparent hover:text-rose-800 focus:outline-hidden focus:bg-rose-500 transition disabled:opacity-50 disabled:pointer-events-none pointer-events-cursor cursor-pointer"
+			(click)="addNewTalk()"
+		>
+			Add Talk
+		</button>
+		<button
+			class="py-2 px-3 w-fit inline-flex justify-center items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-rose-800 bg-transparent text-rose-800 hover:bg-rose-800 hover:text-white focus:outline-hidden focus:bg-rose-500 transition disabled:opacity-50 disabled:pointer-events-none pointer-events-cursor cursor-pointer"
+			(click)="authService.logout()"
+		>
+			Sign Out
+		</button>
+
+		}
+	</div>
+</header>
