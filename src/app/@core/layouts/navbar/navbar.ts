@@ -1,6 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { AuthService } from "../../../@shared/services/auth/auth.service";
 import { TalkService } from "../../../@shared/services/talks/talks.service";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-navbar",
@@ -11,6 +12,7 @@ import { TalkService } from "../../../@shared/services/talks/talks.service";
 export class Navbar {
 	authService = inject(AuthService);
 	talkService = inject(TalkService);
+	router = inject(Router);
 	signIn() {
 		this.authService.anonSignIn();
 	}
@@ -20,6 +22,7 @@ export class Navbar {
 	}
 
 	addNewTalk() {
-		// this.talkService.addTalk()
+		console.log("called");
+		this.router.navigate(["/add-talk"]);
 	}
 }

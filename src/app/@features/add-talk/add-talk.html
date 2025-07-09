@@ -1,0 +1,177 @@
+<!-- Card Section -->
+{{addTalkForm.value |json}}
+<div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto">
+	<!-- Card -->
+	<div class="bg-white rounded-xl shadow-xs p-4 sm:p-7">
+		<div class="mb-8">
+			<h2 class="text-xl font-bold text-gray-800">New Angular Session</h2>
+			<p class="text-sm text-gray-600">Add a session about angular</p>
+		</div>
+
+		<form
+			[formGroup]="addTalkForm"
+			(ngSubmit)="submitTalk()"
+		>
+			<!-- Grid -->
+			<div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
+				<div class="sm:col-span-3">
+					<label class="inline-block text-sm text-gray-800 mt-2.5">
+						Profile photo
+					</label>
+				</div>
+				<!-- End Col -->
+
+				<div class="sm:col-span-9">
+					<div class="flex items-center gap-5">
+						<img
+							class="inline-block size-16 rounded-full ring-2 ring-white"
+							src="https://picsum.photos/id/1/1080"
+							alt="Avatar"
+						/>
+					</div>
+				</div>
+				<!-- End Col -->
+
+				<div class="sm:col-span-3">
+					<label
+						for="session-full-name"
+						class="inline-block text-sm text-gray-800 mt-2.5"
+					>
+						Speaker
+					</label>
+				</div>
+				<!-- End Col -->
+
+				<div class="sm:col-span-9">
+					<div class="sm:flex">
+						<input
+							formControlName="speaker"
+							id="session-full-name"
+							type="text"
+							class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg sm:text-sm relative focus:z-10 focus:border-rose-500 focus:ring-rose-500 checked:border-rose-500 disabled:opacity-50 disabled:pointer-events-none placeholder:opacity-15"
+							placeholder="Maria"
+						/>
+					</div>
+				</div>
+				<!-- End Col -->
+
+				<div class="sm:col-span-3">
+					<label
+						for="session-angular-title"
+						class="inline-block text-sm text-gray-800 mt-2.5"
+					>
+						Talk Title
+					</label>
+				</div>
+				<!-- End Col -->
+
+				<div class="sm:col-span-9">
+					<input
+						formControlName="title"
+						id="session-angular-title"
+						type="text"
+						class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs sm:text-sm rounded-lg focus:border-rose-500 focus:ring-rose-500 checked:border-rose-500 disabled:opacity-50 disabled:pointer-events-none placeholder:opacity-15"
+						placeholder="Getting Started in Angular"
+					/>
+				</div>
+				<!-- End Col -->
+
+				<div class="sm:col-span-3">
+					<label
+						for="session-link"
+						class="inline-block text-sm text-gray-800 mt-2.5"
+					>
+						Slide Link
+					</label>
+				</div>
+				<!-- End Col -->
+
+				<div class="sm:col-span-9">
+					<div class="space-y-2">
+						<input
+							formControlName="slides"
+							id="session-link"
+							type="url"
+							class="py-1.5 sm:py-2 px-3 pe-11 block w-full border-gray-200 shadow-2xs rounded-lg sm:text-sm focus:border-rose-500 focus:ring-rose-500 checked:border-rose-500 disabled:opacity-50 disabled:pointer-events-none placeholder:opacity-15"
+							placeholder="Enter Your slides link"
+						/>
+					</div>
+				</div>
+				<!-- End Col -->
+
+				<div class="sm:col-span-3">
+					<div class="inline-block">
+						<label
+							for="session-phone"
+							class="inline-block text-sm text-gray-800 mt-2.5"
+						>
+							Category
+						</label>
+						<span class="text-sm text-gray-400"> (Optional) </span>
+					</div>
+				</div>
+				<!-- End Col -->
+
+				<div class="sm:col-span-9">
+					<div class="sm:flex">
+						<select
+							formControlName="category"
+							class="py-1.5 sm:py-2 px-3 pe-9 block w-full sm:w-auto border-gray-200 shadow-2xs -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg sm:text-sm relative focus:z-10 focus:border-rose-500 focus:ring-rose-500 checked:border-rose-500 disabled:opacity-50 disabled:pointer-events-none"
+						>
+							<option
+								selected
+								value="NGRX"
+							>
+								NgRx
+							</option>
+							<option value="Angular Schematics">Angular Schematics</option>
+							<option value="Firebase">Firebase</option>
+							<option value="Signals">Signals</option>
+						</select>
+					</div>
+				</div>
+				<!-- End Col -->
+
+				<div class="sm:col-span-3">
+					<label
+						for="description"
+						class="inline-block text-sm text-gray-800 mt-2.5"
+					>
+						Talk Description
+					</label>
+				</div>
+				<!-- End Col -->
+
+				<div class="sm:col-span-9">
+					<textarea
+						formControlName="description"
+						id="session-bio"
+						class="py-1.5 sm:py-2 px-3 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-rose-500 focus:ring-rose-500 checked:border-rose-500 placeholder:opacity-15 disabled:opacity-50 disabled:pointer-events-none"
+						rows="6"
+						placeholder="Type your message..."
+					></textarea>
+				</div>
+				<!-- End Col -->
+			</div>
+			<!-- End Grid -->
+
+			<div class="mt-5 flex justify-end gap-x-2">
+				<button
+					type="button"
+					class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50"
+				>
+					Cancel
+				</button>
+				<button
+					type="submit"
+					[disabled]="addTalkForm.invalid"
+					class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-rose-600 text-white hover:bg-rose-700 focus:outline-hidden focus:bg-rose-700 disabled:opacity-50 disabled:pointer-events-none"
+				>
+					Add Talk
+				</button>
+			</div>
+		</form>
+	</div>
+	<!-- End Card -->
+</div>
+<!-- End Card Section -->

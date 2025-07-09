@@ -17,19 +17,12 @@ export interface ITalk {
 }
 @Component({
 	selector: "app-root",
-	imports: [Navbar, DatePipe, Navbar, Footer],
+	imports: [Navbar, DatePipe, Navbar, Footer, RouterOutlet],
 	templateUrl: "./app.html",
 	styleUrl: "./app.scss",
 })
-export class App implements OnInit {
+export class App {
 	protected title = "gemini-api";
-	talks: ITalk[] = [];
-
-	talkService = inject(TalkService);
-
-	async ngOnInit(): Promise<void> {
-		this.talks = await this.talkService.getTalks();
-	}
 
 	// async getTalkSummary(talk: any) {
 	// 	try {
@@ -42,16 +35,4 @@ export class App implements OnInit {
 	// 	} finally {
 	// 	}
 	// }
-
-	addTalk() {
-		const newTalk: ITalk = {
-			title: "Angular Schematics for Modular Architecture",
-			speaker: "Frank Sitawa",
-			description:
-				"I will cover the basics of Angular Schematics and how you can use it to generate modules when you are using Modular Architecture",
-			category: "Schematics",
-			date: Timestamp.now(),
-		};
-		this.talkService.addTalk(newTalk);
-	}
 }
