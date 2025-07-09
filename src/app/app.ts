@@ -9,11 +9,15 @@ import { Navbar } from "./@core/layouts/navbar/navbar";
 import { Footer } from "./@core/layouts/footer/footer";
 
 export interface ITalk {
+	id?: string;
 	title: string;
 	speaker: string;
 	date: Timestamp;
+	slides: URL | string;
+	image?: URL | string;
 	description: string;
-	category: "NGRX" | "TANSACK" | "SIGNALS" | "Schematics";
+	category: string;
+	"talk-summary"?: string;
 }
 @Component({
 	selector: "app-root",

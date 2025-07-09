@@ -1,14 +1,13 @@
-<main>
-	<div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 py-12 lg:py-24 mx-auto">
-		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-			@for (talk of talks; track $index) {
-			<!--Start Of Card  -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+	@for (talk of talks; track $index) {
+	<div class="card">
+		<div class="body">
 			<div class="group flex flex-col">
 				<div class="relative">
 					<div class="aspect-4/4 overflow-hidden rounded-2xl">
 						<img
 							class="size-full object-cover rounded-2xl"
-							src="https://picsum.photos/seed/picsum/200/300"
+							[src]="`https://picsum.photos/id/${$index+16}/1080`"
 							alt="Session Title"
 						/>
 					</div>
@@ -78,20 +77,25 @@
 
 				<div class="mt-auto flex justify-between gap-4">
 					<button
-						class="py-2 px-3 w-full inline-flex justify-center items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-yellow-700 bg-transparent text-yellow-700 hover:bg-yellow-700 hover:text-black focus:outline-hidden focus:bg-yellow-500 transition disabled:opacity-50 disabled:pointer-events-none pointer-events-cursor cursor-pointer"
+						class="py-2 px-3 w-full inline-flex justify-center items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-rose-700 bg-transparent text-rose-700 hover:bg-rose-700 hover:text-black focus:outline-hidden focus:bg-rose-500 transition disabled:opacity-50 disabled:pointer-events-none pointer-events-cursor cursor-pointer"
 					>
 						Upload Slides
 					</button>
 					<button
-						class="py-2 px-3 w-full inline-flex justify-center items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-transparent bg-yellow-700 text-black hover:bg-yellow-500 focus:outline-hidden focus:bg-yellow-500 transition disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
-						(click)="addTalk()"
+						class="py-2 px-3 w-full inline-flex justify-center items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-transparent bg-rose-700 text-rose-100 hover:bg-rose-500 focus:outline-hidden focus:bg-rose-500 transition disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
+						(click)="getSummary(talk.id!)"
 					>
 						Get Summary
 					</button>
 				</div>
 			</div>
-			<!-- End Card -->
-			}
+		</div>
+		<div class="summary">
+			<h2>{{talk['talk-summary']}}</h2>
 		</div>
 	</div>
-</main>
+	<!--Start Of Card  -->
+
+	<!-- End Card -->
+	}
+</div>
